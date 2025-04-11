@@ -1,48 +1,18 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronDown, ChevronRight, Search, ShoppingCart, User, Heart } from "lucide-react"
+import TopBar from "@/components/shared/TopBar"
 
 export default function HairAndBeardPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Top bar */}
-      <div className="bg-black text-white text-xs text-center py-1">OFFICIAL US ONLINE SHOP</div>
-
-      {/* Header */}
-      <header className="bg-white flex items-center justify-between px-8 py-4">
-        <div className="flex items-center gap-8">
-          <Link href="/" className="text-2xl font-bold text-[#00a651]">
-            LEVEL3
-          </Link>
-          <nav className="hidden md:flex gap-6">
-            <Link href="/" className="text-sm font-medium">
-              Home
-            </Link>
-            <Link href="/categories" className="text-sm font-medium">
-              Categories
-            </Link>
-            <Link href="/programs" className="text-sm font-medium">
-              Programs
-            </Link>
-          </nav>
-        </div>
-        <div className="flex items-center gap-4">
-          <span className="text-sm hidden md:inline">Navigation</span>
-          <div className="flex items-center gap-1">
-            <span className="text-sm">English</span>
-            <ChevronDown size={14} />
-          </div>
-          <Search size={18} />
-          <User size={18} />
-          <Heart size={18} />
-          <ShoppingCart size={18} />
-        </div>
-      </header>
+      
+      <TopBar />
 
       {/* Hero Banner */}
       <div className="relative h-[200px] bg-black">
         <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent z-0">
-          <Image src="/hair-products-banner.png" alt="Hair Products" fill className="object-cover opacity-70" />
+          <Image src="https://lv3.com/cdn/shop/files/DSC03174_3a2070eb-dd55-4d4e-8aad-fa386a070cf8.jpg" alt="Hair Products" fill className="object-cover opacity-70" />
         </div>
         <div className="relative z-10 flex items-center justify-center h-full">
           <div className="text-center">

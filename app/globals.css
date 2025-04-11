@@ -13,9 +13,17 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Avenir2';
+  src: url('/fonts/avenirnex.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255; /* Blanco por defecto */
+  --foreground-rgb: 247, 247, 247;
+  --background-rgb: 255, 255, 255;
 }
 /*
 @media (prefers-color-scheme: dark) {
@@ -37,6 +45,10 @@ body {
 /* Clase personalizada para aplicar Avenir Next Rounded cuando lo desees */
 .avenir-font {
   font-family: 'Avenir', sans-serif; /* Aplicar Avenir de manera puntual */
+}
+
+.avenir2-font {
+  font-family: 'Avenir2', sans-serif; /* Aplicar Avenir de manera puntual */
 }
 
 @layer utilities {
