@@ -90,7 +90,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       </div>
 
       {/* Products Grid */}
-      <div className="bg-white px-8 py-8">
+      <div className="bg-white px-8 py-8  text-gray-600">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {products.map((product, index) => (
             <Link href={`/product/${product.slug}`} key={index} className="flex flex-col group">
@@ -104,7 +104,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 />
               </div>
               <h3 className="text-sm font-medium">{product.name}</h3>
-              <p className="text-sm text-gray-600">From ${product.price}</p>
+              <p className="text-sm">From ${product.price}</p>
             </Link>
           ))}
         </div>

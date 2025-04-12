@@ -34,7 +34,7 @@ export default function ProductPage({ params }: ProductPageProps) {
       <div className="h-16"></div>
 
       {/* Product Detail Section */}
-      <div className="bg-white px-4 md:px-8 py-8">
+      <div className="bg-white px-4 md:px-8 py-8 text-foreground">
         <div className="max-w-6xl mx-auto">
           {/* Product Images and Info */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
