@@ -9,9 +9,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Roboto', 'Arial', 'sans-serif'],  // Agrega tu fuente aquí
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
