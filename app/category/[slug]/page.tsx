@@ -30,8 +30,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       {/* Header */}
       <Header />
 
-      {/* Empty space to account for fixed header */}
-      <div className="h-16"></div>
+      {/* Empty space to account for fixed header and topbar */}
+      <div className="h-[72px]"></div>
 
       {/* Hero Banner */}
       <div className="relative h-[200px] bg-black">

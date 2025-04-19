@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Star, Minus, Plus, Play } from "lucide-react"
@@ -6,6 +9,7 @@ import { notFound } from "next/navigation"
 import { TopBar } from "@/components/top-bar"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { useCart } from "@/lib/cart-context"
 
 interface ProductPageProps {
   params: {
@@ -15,12 +19,26 @@ interface ProductPageProps {
 
 export default function ProductPage({ params }: ProductPageProps) {
   const product = getProductBySlug(params.slug)
+  const [quantity, setQuantity] = useState(1)
+  const [selectedSize, setSelectedSize] = useState("100g")
+  const { addToCart } = useCart()
 
   if (!product) {
     notFound()
   }
 
   const relatedProducts = getRelatedProducts(product.category, product.slug)
+
+  const handleAddToCart = () => {
+    addToCart({
+      slug: product.slug,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity: quantity,
+      size: selectedSize,
+    })
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -30,11 +48,8 @@ export default function ProductPage({ params }: ProductPageProps) {
       {/* Header */}
       <Header />
 
-      {/* Empty space to account for fixed header */}
-      <div className="h-16"></div>
-
       {/* Product Detail Section */}
-      <div className="bg-white px-4 md:px-8 py-8 text-foreground">
+      <div className="bg-white px-4 md:px-8 py-8  text-foreground">
         <div className="max-w-6xl mx-auto">
           {/* Product Images and Info */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -95,22 +110,45 @@ export default function ProductPage({ params }: ProductPageProps) {
                 <span className="font-bold">Shop Pay</span>
               </p>
 
+              {/* Size Selection */}
+              <div className="mb-6">
+                <p className="text-sm font-medium mb-2">Size</p>
+                <div className="flex gap-2">
+                  {["100g", "150g", "500g"].map((size) => (
+                    <button
+                      key={size}
+                      className={`px-4 py-2 rounded-full border ${
+                        selectedSize === size
+                          ? "border-black bg-black text-white"
+                          : "border-gray-300 hover:border-gray-500"
+                      }`}
+                      onClick={() => setSelectedSize(size)}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               {/* Quantity */}
               <div className="mb-6">
                 <p className="text-sm font-medium mb-2">Quantity</p>
                 <div className="flex items-center border rounded w-24">
-                  <button className="px-2 py-1">
+                  <button className="px-2 py-1" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
                     <Minus className="w-4 h-4" />
                   </button>
-                  <span className="flex-1 text-center">1</span>
-                  <button className="px-2 py-1">
+                  <span className="flex-1 text-center">{quantity}</span>
+                  <button className="px-2 py-1" onClick={() => setQuantity(quantity + 1)}>
                     <Plus className="w-4 h-4" />
                   </button>
                 </div>
               </div>
 
               {/* Add to Cart Button */}
-              <button className="w-full bg-white border border-black text-black font-medium py-3 rounded mb-2">
+              <button
+                className="w-full bg-white border border-black text-black font-medium py-3 rounded mb-2"
+                onClick={handleAddToCart}
+              >
                 ADD TO CART
               </button>
 
@@ -237,7 +275,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                     <p className="text-sm mb-2">Amazing product!</p>
                     <p className="text-sm">
                       This product has completely transformed my routine. It's exactly what I needed and the quality is
-                      excellent.
+                      excellent. It's exactly what I needed and the quality is excellent.
                     </p>
                   </div>
                 ))}

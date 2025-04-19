@@ -20,7 +20,13 @@ export default function Home() {
       <section className="relative h-screen">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <Image src="https://lv3.com/cdn/shop/files/foil_wide.png" alt="Hero Background" fill priority className="object-cover" />
+          <Image 
+            src="https://lv3.com/cdn/shop/files/foil_wide.png" 
+            alt="Hero Background" 
+            fill 
+            priority 
+            className="object-cover" 
+          />
           <div className="absolute inset-0 bg-black bg-opacity-30"></div>
         </div>
       </section>
